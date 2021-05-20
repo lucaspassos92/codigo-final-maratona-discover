@@ -1,3 +1,4 @@
+
 const Modal = {
     open() {
 
@@ -19,6 +20,7 @@ const Modal = {
             .remove('active');
     }
 }
+
 const Storage = {
     get() {
         return JSON.parse(localStorage.getItem("dev.finances: transactions")) || []
@@ -28,6 +30,7 @@ const Storage = {
 
     },
 }
+
 const Transaction = {
     all: Storage.get(),
     add(transaction) {
@@ -109,8 +112,8 @@ const Utils = {
         return `${spliteedDate[2]}/${spliteedDate[1]}/${spliteedDate[0]}`
     },
     formatAmount(value) {
-        value = Number(value) * 100
-        return value
+        value = value * 100
+        return Math.round(value)
     },
     formatCurrency(value) {
         const signal = Number(value) < 0 ? "-" : "";
